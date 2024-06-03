@@ -5,97 +5,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="styles.css" rel="stylesheet">
     <title>Timer App</title>
-    <style>
-        .timer-display {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-    </style>
-</head>
 
-<body class="container my-5">
-
-    <h2 class="text-center mb-4">Timer App</h2>
-
-    <div class="accordion" id="timerAccordion">
-        <div class="card">
-            <div class="card-header" id="heading1H">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1H"
-                        aria-expanded="true" aria-controls="collapse1H">
-                        1 Hour Timer
-                    </button>
-                </h2>
+    </head>
+    
+    <body class="container my-5 text-center">
+    
+        <h2 class="text-center mb-4">Timer App</h2>
+    
+        <div class="accordion" id="timerAccordion">
+            <div class="card">
+                <div class="card-header bg-1h" id="heading1H">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1H"
+                            aria-expanded="true" aria-controls="collapse1H">
+                            1 Hour
+                        </button>
+                    </h2>
+                </div>
+    
+                <div id="collapse1H" class="collapse" aria-labelledby="heading1H" data-parent="#timerAccordion">
+                    <div class="card-body bg-1h">
+                        <div class="timer-display" id="display1H">1H</div>
+                        <button class="btn btn-primary" id="startPauseBtn1H"
+                            onclick="startPauseTimer('1H', 3600)">Start</button>
+                        <button class="btn btn-danger" onclick="resetTimer('1H', 3600)">Reset</button>
+                    </div>
+                </div>
             </div>
-
-            <div id="collapse1H" class="collapse" aria-labelledby="heading1H" data-parent="#timerAccordion">
-                <div class="card-body">
-                    <div class="timer-display" id="display1H">1H</div>
-                    <button class="btn btn-primary" id="startPauseBtn1H"
-                        onclick="startPauseTimer('1H', 3600)">Start</button>
-                    <button class="btn btn-danger" onclick="resetTimer('1H', 3600)">Reset</button>
+            <div class="card">
+                <div class="card-header bg-2h" id="heading2H">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2H"
+                            aria-expanded="true" aria-controls="collapse2H">
+                            2 Hour
+                        </button>
+                    </h2>
+                </div>
+    
+                <div id="collapse2H" class="collapse" aria-labelledby="heading2H" data-parent="#timerAccordion">
+                    <div class="card-body bg-2h">
+                        <div class="timer-display" id="display2H">2H</div>
+                        <button class="btn btn-primary" id="startPauseBtn2H"
+                            onclick="startPauseTimer('2H', 7200)">Start</button>
+                        <button class="btn btn-danger" onclick="resetTimer('2H', 7200)">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-4h" id="heading4H">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse4H"
+                            aria-expanded="true" aria-controls="collapse4H">
+                            4 Hour
+                        </button>
+                    </h2>
+                </div>
+    
+                <div id="collapse4H" class="collapse" aria-labelledby="heading4H" data-parent="#timerAccordion">
+                    <div class="card-body bg-4h">
+                        <div class="timer-display" id="display4H">4H</div>
+                        <button class="btn btn-primary" id="startPauseBtn4H"
+                            onclick="startPauseTimer('4H', 14400)">Start</button>
+                        <button class="btn btn-danger" onclick="resetTimer('4H', 14400)">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-header bg-8h" id="heading8H">
+                    <h2 class="mb-0">
+                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse8H"
+                            aria-expanded="true" aria-controls="collapse8H">
+                            8 Hour
+                        </button>
+                    </h2>
+                </div>
+    
+                <div id="collapse8H" class="collapse" aria-labelledby="heading8H" data-parent="#timerAccordion">
+                    <div class="card-body bg-8h">
+                        <div class="timer-display" id="display8H">8H</div>
+                        <button class="btn btn-primary" id="startPauseBtn8H"
+                            onclick="startPauseTimer('8H', 28800)">Start</button>
+                        <button class="btn btn-danger" onclick="resetTimer('8H', 28800)">Reset</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="card">
-            <div class="card-header" id="heading2H">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2H"
-                        aria-expanded="true" aria-controls="collapse2H">
-                        2 Hour Timer
-                    </button>
-                </h2>
-            </div>
 
-            <div id="collapse2H" class="collapse" aria-labelledby="heading2H" data-parent="#timerAccordion">
-                <div class="card-body">
-                    <div class="timer-display" id="display2H">2H</div>
-                    <button class="btn btn-primary" id="startPauseBtn2H"
-                        onclick="startPauseTimer('2H', 7200)">Start</button>
-                    <button class="btn btn-danger" onclick="resetTimer('2H', 7200)">Reset</button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="heading4H">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse4H"
-                        aria-expanded="true" aria-controls="collapse4H">
-                        4 Hour Timer
-                    </button>
-                </h2>
-            </div>
-
-            <div id="collapse4H" class="collapse" aria-labelledby="heading4H" data-parent="#timerAccordion">
-                <div class="card-body">
-                    <div class="timer-display" id="display4H">4H</div>
-                    <button class="btn btn-primary" id="startPauseBtn4H"
-                        onclick="startPauseTimer('4H', 14400)">Start</button>
-                    <button class="btn btn-danger" onclick="resetTimer('4H', 14400)">Reset</button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-header" id="heading8H">
-                <h2 class="mb-0">
-                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse8H"
-                        aria-expanded="true" aria-controls="collapse8H">
-                        8 Hour Timer
-                    </button>
-                </h2>
-            </div>
-
-            <div id="collapse8H" class="collapse" aria-labelledby="heading8H" data-parent="#timerAccordion">
-                <div class="card-body">
-                    <div class="timer-display" id="display8H">8H</div>
-                    <button class="btn btn-primary" id="startPauseBtn8H"
-                        onclick="startPauseTimer('8H', 28800)">Start</button>
-                    <button class="btn btn-danger" onclick="resetTimer('8H', 28800)">Reset</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
     <script>
         let countdowns = {};

@@ -1,0 +1,37 @@
+.timer-display {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.card-body {
+    text-align: center;
+}
+
+.accordion {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+h2 {
+    text-align: center;
+}
+
+body {
+    background-color: #abcff3;
+}
+
+.bg-1h {
+    background-color: #f7e4c9;
+}
+
+.bg-2h {
+    background-color: #dff0d8;
+}
+
+.bg-4h {
+    background-color: #fcf8e3;
+}
+
+.bg-8h {
+    background-color: #f3d1d1;
+}
