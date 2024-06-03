@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>Timer App</title>
+    <style>
+        .timer-display {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body class="container my-5">
+
+    <h2 class="text-center mb-4">Timer App</h2>
+
+    <div class="accordion" id="timerAccordion">
+        <div class="card">
+            <div class="card-header" id="heading1H">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse1H"
+                        aria-expanded="true" aria-controls="collapse1H">
+                        1 Hour Timer
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse1H" class="collapse" aria-labelledby="heading1H" data-parent="#timerAccordion">
+                <div class="card-body">
+                    <div class="timer-display" id="display1H">1H</div>
+                    <button class="btn btn-primary" id="startPauseBtn1H"
+                        onclick="startPauseTimer('1H', 3600)">Start</button>
+                    <button class="btn btn-danger" onclick="resetTimer('1H', 3600)">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="heading2H">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse2H"
+                        aria-expanded="true" aria-controls="collapse2H">
+                        2 Hour Timer
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse2H" class="collapse" aria-labelledby="heading2H" data-parent="#timerAccordion">
+                <div class="card-body">
+                    <div class="timer-display" id="display2H">2H</div>
+                    <button class="btn btn-primary" id="startPauseBtn2H"
+                        onclick="startPauseTimer('2H', 7200)">Start</button>
+                    <button class="btn btn-danger" onclick="resetTimer('2H', 7200)">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="heading4H">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse4H"
+                        aria-expanded="true" aria-controls="collapse4H">
+                        4 Hour Timer
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse4H" class="collapse" aria-labelledby="heading4H" data-parent="#timerAccordion">
+                <div class="card-body">
+                    <div class="timer-display" id="display4H">4H</div>
+                    <button class="btn btn-primary" id="startPauseBtn4H"
+                        onclick="startPauseTimer('4H', 14400)">Start</button>
+                    <button class="btn btn-danger" onclick="resetTimer('4H', 14400)">Reset</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-header" id="heading8H">
+                <h2 class="mb-0">
+                    <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapse8H"
+                        aria-expanded="true" aria-controls="collapse8H">
+                        8 Hour Timer
+                    </button>
+                </h2>
+            </div>
+
+            <div id="collapse8H" class="collapse" aria-labelledby="heading8H" data-parent="#timerAccordion">
+                <div class="card-body">
+                    <div class="timer-display" id="display8H">8H</div>
+                    <button class="btn btn-primary" id="startPauseBtn8H"
+                        onclick="startPauseTimer('8H', 28800)">Start</button>
+                    <button class="btn btn-danger" onclick="resetTimer('8H', 28800)">Reset</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let countdowns = {};
+        let isPaused = {};
+        let durations = {};
+
+        function startPauseTimer(id, duration) {
+            const btn = document.getElementById(`startPauseBtn${id}`);
+
+            if (btn.textContent === 'Start') {
+                if (!durations[id]) durations[id] = duration;
+                startTimer(id);
+                btn.textContent = 'Pause';
+            } else {
+                pauseTimer(id);
+                btn.textContent = isPaused[id] ? 'Start' : 'Pause';
+            }
+        }
+
+        function startTimer(id) {
+            if (countdowns[id]) clearInterval(countdowns[id]);
+
+            isPaused[id] = false;
+
+            countdowns[id] = setInterval(() => {
+                if (!isPaused[id]) {
+                    let totalTime = durations[id];
+                    let hours = Math.floor(totalTime / 3600);
+                    let minutes = Math.floor((totalTime % 3600) / 60);
+                    let seconds = totalTime % 60;
+
+                    document.getElementById(`display${id}`).textContent = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+                    if (totalTime <= 0) {
+                        clearInterval(countdowns[id]);
+                        speak("The time has passed");
+                    }
+
+                    durations[id]--;
+                }
+            }, 1000);
+        }
+
+        function pauseTimer(id) {
+            isPaused[id] = !isPaused[id];
+        }
+
+        function resetTimer(id, duration) {
+            clearInterval(countdowns[id]);
+            durations[id] = duration;
+            document.getElementById(`display${id}`).textContent = `${Math.floor(duration / 3600).toString().padStart(2, '0')}:00:00`;
+            document.getElementById(`startPauseBtn${id}`).textContent = 'Start';
+        }
+
+        function speak(message) {
+            const speech = new SpeechSynthesisUtterance();
+            speech.text = message;
+            window.speechSynthesis.speak(speech);
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
