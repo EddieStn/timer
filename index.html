@@ -16,6 +16,25 @@
     
         <div class="accordion" id="timerAccordion">
             <div class="card">
+                <div class="card-header bg-1h" id="heading1M">
+                    <h2 class="mb-0">
+                        <button class="btn btn-info text-white" type="button" data-toggle="collapse" data-target="#collapse1M"
+                            aria-expanded="true" aria-controls="collapse1M">
+                            5 Sec
+                        </button>
+                    </h2>
+                </div>
+    
+                <div id="collapse1M" class="collapse" aria-labelledby="heading1M" data-parent="#timerAccordion">
+                    <div class="card-body bg-1M">
+                        <div class="timer-display" id="display1M">5 sec</div>
+                        <button class="btn btn-primary" id="startPauseBtn1M"
+                            onclick="startPauseTimer('1M', 5)">Start</button>
+                        <button class="btn btn-danger" onclick="resetTimer('1M', 5)">Reset</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
                 <div class="card-header bg-1h" id="heading1H">
                     <h2 class="mb-0">
                         <button class="btn btn-info text-white" type="button" data-toggle="collapse" data-target="#collapse1H"
@@ -128,7 +147,7 @@
 
                     if (totalTime <= 0) {
                         clearInterval(countdowns[id]);
-                        speak("The time has passed");
+                        speak("The time is up");
                     }
 
                     durations[id]--;
