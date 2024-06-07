@@ -11,41 +11,16 @@
     </head>
     
     <body class="container my-5 text-center">
+        <h1 class="text-center mb-4">Timer App</h1>
         <div class="clock">
             <div class="cup top">
                 <div class="sand"></div>
             </div>
             <div class="cup">
-                <div class="sand delay">
-                    
-                </div>
+                <div class="sand delay"></div>
             </div>
         </div>
-    
-        <h2 class="text-center mb-4">Timer App</h2>
-    
         <div class="accordion" id="timerAccordion">
-            <div class="card">
-                <div class="card-header bg-1h" id="heading1M">
-                    <h2 class="mb-0">
-                        <button class="btn btn-info text-white" type="button" data-toggle="collapse" data-target="#collapse1M"
-                            aria-expanded="true" aria-controls="collapse1M">
-                            5 Sec
-                        </button>
-                    </h2>
-                    
-                </div>
-    
-                <div id="collapse1M" class="collapse" aria-labelledby="heading1M" data-parent="#timerAccordion">
-                    <div class="card-body bg-1M">
-                        <div class="timer-display" id="display1M">5 sec</div>
-                        <button class="btn btn-primary" id="startPauseBtn1M"
-                            onclick="startPauseTimer('1M', 5)">Start</button>
-                        <button class="btn btn-danger" onclick="resetTimer('1M', 5)">Reset</button>
-                        
-                    </div>
-                </div>
-            </div>
             <div class="card">
                 <div class="card-header bg-1h" id="heading1H">
                     <h2 class="mb-0">

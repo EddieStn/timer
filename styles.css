@@ -40,8 +40,8 @@ body {
 
 .clock {
     background-color: #409AD8;
-    height: 200px;
-    width: 200px;
+    height: 100px;
+    width: 100px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,6 +49,7 @@ body {
     flex-direction: column;
     animation: clock 5s ease-in-out infinite;
     border-radius: 50%;
+    margin: 10px auto;
 }
 
 .top {
